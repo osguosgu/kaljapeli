@@ -19,9 +19,11 @@ def main():
     Timer.start_clock()
     Timer.circle_time = 10
 
-    drawer = Drawer(main_surface)
+    oskari = Player('Oskari', 'male', 85000, 0.05, (0,255,0))
+    niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
+    players = [niko, oskari]
 
-    player = Player('oskari', 'male', 85000)
+    drawer = Drawer(main_surface, players)
 
     while True:
         
