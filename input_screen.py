@@ -8,8 +8,9 @@ the user has pressed enter
 import pygame, pygame.font, pygame.event, pygame.draw, string
 from pygame.locals import *
 
-def Input_screen(screen, ask):
+def Input_screen(ask):
 	pygame.init()
+	screen = pygame.display.set_mode((400, 200))
 	value = ""
 	font = pygame.font.Font(None, 50)
 	while True:
@@ -30,6 +31,6 @@ def Input_screen(screen, ask):
 		rect = block.get_rect()
 		rect.center = screen.get_rect().center
 		fontobject = pygame.font.Font(None,46)
-		screen.blit(fontobject.render(ask, 1, (255,255,255)), (screen.get_width()/2-fontobject.size(ask)[0]/2, screen.get_height()/2-100))
+		screen.blit(fontobject.render(ask, 1, (255,255,255)), (screen.get_width()/2-fontobject.size(ask)[0]/2, screen.get_height()/2-50))
 		screen.blit(block, rect)
 		pygame.display.flip()
