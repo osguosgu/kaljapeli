@@ -3,12 +3,11 @@ from time import time
 
 class Timer:
 
-    def __init__(self, circle_time):
-        self.clock = pg.time.Clock()
-        self.circle_time = circle_time
+    start_time = 1
+    circle_time = 1
 
-    def start_clock(self):
-        self.start = time()
+    def start_clock():
+        Timer.start_time = time()
 
-    def time_left(self):
-        return (time() - self.start) % self.circle_time
+    def time_left():
+        return (time() - Timer.start_time) % Timer.circle_time
