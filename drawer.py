@@ -62,7 +62,7 @@ class Drawer:
 
         for i, p in enumerate(self.players):
             p.calculate_bac()
-            stats = self.small_font.render("{}. {}: {:.6f} o/oo, alc consumed: {} grams, sober in {:.2f} hours".format(i+1,p.name, p.bac, p.alcohol_consumed, p.time_left_drunk),1 ,  p.color )
+            stats = self.small_font.render("{}. {}: {:.6f} o/oo, alc consumed: {:.2f} grams, sober in {:.2f} hours".format(i+1,p.name, p.bac, p.alcohol_consumed, p.time_left_drunk),1 ,  p.color )
             self.main_surface.blit(stats, ( 0, self.info_bar.get_height() + LINE_SPACE + i * stats.get_height()))
 
 
