@@ -9,8 +9,10 @@ FEMALE_FACTOR = 0.55
 BAC_REDUCTION_PER_SECOND = 0.016/3600
 
 class Player:
+    number_of_players = 0
 
     def __init__(self, name, gender, weight, drink_alc_perc=0.05, color=(255,255,255)):
+        self.id = Player.number_of_players
         self.name = name
         self.gender = gender
         self.weight = weight
@@ -21,6 +23,9 @@ class Player:
         self.gender = gender  
         self.gender_factor = MALE_FACTOR if gender == 'male' else FEMALE_FACTOR
         self.time_left_drunk = 0
+
+        Player.number_of_players += 1
+
     def drink(self):
         grams_of_alcohol = SIP_SIZE*(self.drink_alc_perc*1000)
         self.alcohol_consumed += grams_of_alcohol
