@@ -11,6 +11,7 @@ the user has pressed enter
 '''
 
 def Input_field(disp, ask, digits_only):
+
 	screen = pygame.Surface((400, 200))
 	value = ""
 	font = pygame.font.Font(None, 50)
