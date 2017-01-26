@@ -12,8 +12,8 @@ from game_logic import *
 def main():
 
     pg.init()      
-    surface_height = 500   
-    surface_width = 1000
+    surface_height = 700   
+    surface_width = 1200
     main_surface = pg.display.set_mode((surface_width, surface_height))
 
 
@@ -38,12 +38,13 @@ def main():
     laser_beam_sound = pg.mixer.Sound("Tick.wav")
     '''
 
-    oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
-    niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
-    nikoliina = Player('Nikoliina', 'female', 64500, 0.02, (200,50,100))
-    petsku = Player('Petsku', 'male', 90000, 0.1, (240,100,20))
+        # oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
+        # niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
+        # nikolina = Player('Nikolina', 'female', 64500, 0.02, (200,50,100))
+        # petsku = Player('Petsku', 'male', 90000, 0.1, (240,100,20))
+        # otto = Player('Otto', 'male', 70000, 0.1, (0,255,20))
 
-    players.extend([niko, oskari, petsku, nikoliina])
+    # players.extend([niko, oskari, petsku, nikolina, otto])
 
     # game_mode = ClassicMinuteBeerMode(players)
     game_mode = OptimizedBACMode(players)
@@ -59,7 +60,7 @@ def main():
         pg.display.flip()
 
     Timer.reset_clock()
-    Timer.round_time = 10
+    Timer.round_time = 20
     #Main loop
     while True:
         game_mode.update_game()

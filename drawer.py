@@ -2,6 +2,7 @@ import pygame as pg
 from time import time
 from timer import Timer
 import game_logic
+from colors import *
 
 RED = (255, 0, 0)
 LINE_SPACE = 10
@@ -21,13 +22,13 @@ class Drawer:
         self.some_drinking_to_do = False
 
     def init_screen(self, ):
-        self.main_surface.fill((10,10,10))
+        self.main_surface.fill(BLACK)
 
     #TODO refactor.. made in hurry
     def draw_game_message(self):
         if (self.game_mode.get_counter_text() != ""):
             text = self.game_mode.get_counter_text()
-            self.count_label = self.big_font.render(text, 1, RED)
+            self.count_label = self.big_font.render(text, 1, RED, BLACK)
             position_x = self.main_surface.get_width() / 2 - self.count_label.get_width() / 2
             position_y = self.main_surface.get_height() / 2 - self.count_label.get_height() / 2
             self.main_surface.blit(self.count_label, ( position_x , position_y))
@@ -35,7 +36,7 @@ class Drawer:
         if self.game_mode.game_id == game_logic.MINUTE_BEER:
             if (self.game_mode.game_message_text != ""):
                 text = self.game_mode.game_message_text + self.game_mode.get_counter_text()
-                self.text_label = self.big_font.render(text, 1, RED)
+                self.text_label = self.big_font.render(text, 1, RED, BLACK)
 
                 position_x = self.main_surface.get_width() / 2 - self.text_label.get_width() / 2
                 position_y = self.main_surface.get_height() / 2 - self.text_label.get_height() / 2
@@ -48,7 +49,7 @@ class Drawer:
                 if (len(row) == 4):
                     label_rows.append(list(row))
                     row = []
-                text_label = self.normal_font.render(d.name, 1, d.color, (20,20,20))
+                text_label = self.normal_font.render(d.name, 1, d.color, BLACK)
                 row.append(text_label)
 
             if (len(row) != 0):
@@ -59,7 +60,7 @@ class Drawer:
                 row_width = sum(l.get_width() + LINE_SPACE for l in row)
 
                 position_x = self.main_surface.get_width() / 2 - row_width / 2
-                position_y = self.main_surface.get_height() / 2 - i*row[0].get_height() / 2 + i*row[0].get_height()
+                position_y = self.main_surface.get_height() / 3 - i*row[0].get_height() / 2 + 1.7*i*row[0].get_height()
 
                 for j, l in enumerate(row):
                     self.main_surface.blit(l, ( position_x , position_y))
@@ -79,7 +80,8 @@ class Drawer:
         self.main_surface.blit(self.info_bar, (position_x, position_y))
 
     def draw_player_stats(self):
-
+        if (self.game_mode.game_id == game_logic.OPTIMIZED_BAC and self.game_mode.show_drinkers):
+            return
         for i, p in enumerate(self.players):
             p.calculate_bac()
             stats = self.small_font.render("{}. {: <8} {:.6f} o/oo, alc consumed: {:.2f} grams, sober in {:.2f} hours".format(i+1,p.name, p.bac, p.alcohol_consumed, p.time_left_drunk),1 ,  p.color )
