@@ -52,8 +52,6 @@ class Drawer:
         self.init_screen()
         self.draw_game_message()
 
-
-
     def draw(self):
         self.init_screen()
         self.draw_info_bar()
