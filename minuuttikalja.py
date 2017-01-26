@@ -20,12 +20,13 @@ def main():
 
     oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
     niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
-    nikoliina = Player('Nikoliina', 'female', 64500, 0.02, (200,0,100))
+    nikoliina = Player('Nikoliina', 'female', 64500, 0.02, (200,50,100))
     petsku = Player('Petsku', 'male', 90000, 0.1, (240,100,20))
 
     players = [niko, oskari, petsku, nikoliina]
 
-    game_mode = ClassicMinuteBeerMode(players)
+    # game_mode = ClassicMinuteBeerMode(players)
+    game_mode = OptimizedBACMode(players)
 
     drawer = Drawer(main_surface, players, game_mode)
 
@@ -38,7 +39,7 @@ def main():
         pg.display.flip()
 
     Timer.reset_clock()
-    Timer.round_time = 60
+    Timer.round_time = 10
     #Main loop
     while True:
         game_mode.update_game()
