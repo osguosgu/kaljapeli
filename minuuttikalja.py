@@ -38,13 +38,17 @@ def main():
     laser_beam_sound = pg.mixer.Sound("Tick.wav")
     '''
 
-        # oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
-        # niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
-        # nikolina = Player('Nikolina', 'female', 64500, 0.02, (200,50,100))
-        # petsku = Player('Petsku', 'male', 90000, 0.1, (240,100,20))
-        # otto = Player('Otto', 'male', 70000, 0.1, (0,255,20))
+    oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
+    # niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
+    # nikolina = Player('Nikolina', 'female', 64500, 0.02, (200,50,100))
+    petsku = Player('Petsku', 'male', 90000, 0.053, (240,100,20))
+    # otto = Player('Otto', 'male', 70000, 0.1, (0,255,20))
+    late = Player('Late', 'male', 97000, 0.053, GREEN)
+    nikke = Player('Nikke', 'male', 65000, 0.053, RED)
+    camilla = Player('Camilla', 'female', 70000, 0.053, BLUE)
+    roosa = Player('Roosa' , 'female', 70000, 0.053, PURPLE)
 
-    # players.extend([niko, oskari, petsku, nikolina, otto])
+    players.extend([late, oskari, nikke, camilla, roosa])
 
     # game_mode = ClassicMinuteBeerMode(players)
     game_mode = OptimizedBACMode(players)

@@ -32,7 +32,7 @@ class Player:
         self.calculate_bac()
 
     def calculate_bac(self):
-        total_bac = self.alcohol_consumed / (self.weight * self.gender_factor) * 100
+        total_bac = self.alcohol_consumed / (self.weight * self.gender_factor) * 100 * 10
         alcohol_burned = (time() - Timer.start_time) * BAC_REDUCTION_PER_SECOND
         real_bac = total_bac - alcohol_burned
         self.bac = real_bac if real_bac > 0 else 0
