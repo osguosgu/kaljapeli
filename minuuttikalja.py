@@ -7,6 +7,7 @@ from player import Player
 from input_screen import *
 from player import *
 from game_logic import *
+from menu import *
 
 
 def main():
@@ -15,6 +16,9 @@ def main():
     surface_height = 500   
     surface_width = 1000
     main_surface = pg.display.set_mode((surface_width, surface_height))
+
+
+    init_game(main_surface)
 
 
     players = []

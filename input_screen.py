@@ -1,5 +1,6 @@
 import pygame, pygame.font, pygame.event, pygame.draw, string
 from pygame.locals import *
+import math
 
 
 '''
@@ -11,9 +12,9 @@ the user has pressed enter
 '''
 
 def Input_field(disp, ask, digits_only):
-	screen = pygame.Surface((400, 200))
+	screen = pygame.Surface((disp.get_width(), 200))
 	value = ""
-	font = pygame.font.Font(None, 50)
+	font = pygame.font.Font(None, 40)
 	while True:
 		for evt in pygame.event.get():
 			if evt.type == KEYDOWN:
@@ -31,7 +32,7 @@ def Input_field(disp, ask, digits_only):
 		block = font.render(value, True, (255, 255, 255))
 		rect = block.get_rect()
 		rect.center = screen.get_rect().center
-		fontobject = pygame.font.Font(None,46)
+		fontobject = pygame.font.Font(None,40)
 		screen.blit(fontobject.render(ask, 1, (255,255,255)), (screen.get_width()/2-fontobject.size(ask)[0]/2, screen.get_height()/2-75))
 		screen.blit(block, rect)
 		disp.blit(screen, (disp.get_width()/2-screen.get_width()/2,disp.get_height()/2-screen.get_height()/2))
@@ -46,7 +47,7 @@ the user has pressed enter
 '''
 
 def Select_field(disp, question, options):
-	screen = pygame.Surface((len(options)*200, 200))
+	screen = pygame.Surface((len(options)*300, 200))
 	font = pygame.font.Font(None, 50)
 
 	selection = 0
@@ -77,10 +78,10 @@ def Select_field(disp, question, options):
 				pygame.draw.rect(screen, (100,100,255), block, 3)
 			else:
 				pygame.draw.rect(screen, (255,255,255), block, 1)
-			fontobject = pygame.font.Font(None,46)
-			screen.blit(fontobject.render(options[i], 1, (255,255,255)), (i*block_width + 10, screen.get_height()/2))
+			fontobject = pygame.font.Font(None,40)
+			screen.blit(fontobject.render(options[i], 1, (255,255,255)), (i*block_width + block_width/2 - fontobject.size(options[i])[0]/2, screen.get_height()/2 + 25))
 		
-		fontobject = pygame.font.Font(None,46)
+		fontobject = pygame.font.Font(None,40)
 		screen.blit(fontobject.render(question, 1, (255,255,255)), (screen.get_width()/2-fontobject.size(question)[0]/2, screen.get_height()/2-75))
 		disp.blit(screen, (disp.get_width()/2-screen.get_width()/2,disp.get_height()/2-screen.get_height()/2))
 		pygame.display.flip()
