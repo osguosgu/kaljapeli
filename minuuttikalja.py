@@ -13,8 +13,8 @@ from menu import *
 def main():
 
     pg.init()      
-    surface_height = 500   
-    surface_width = 1000
+    surface_height = 700   
+    surface_width = 1200
     main_surface = pg.display.set_mode((surface_width, surface_height))
 
 
@@ -43,13 +43,19 @@ def main():
     '''
 
     oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
-    niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
-    nikoliina = Player('Nikoliina', 'female', 64500, 0.02, (200,0,100))
-    petsku = Player('Petsku', 'male', 90000, 0.1, (240,100,20))
+    # niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
+    # nikolina = Player('Nikolina', 'female', 64500, 0.02, (200,50,100))
+    petsku = Player('Petsku', 'male', 90000, 0.053, (240,100,20))
+    # otto = Player('Otto', 'male', 70000, 0.1, (0,255,20))
+    late = Player('Late', 'male', 97000, 0.053, GREEN)
+    nikke = Player('Nikke', 'male', 65000, 0.053, RED)
+    camilla = Player('Camilla', 'female', 70000, 0.053, BLUE)
+    roosa = Player('Roosa' , 'female', 70000, 0.053, PURPLE)
 
-    players.extend([niko, oskari, petsku, nikoliina])
+    players.extend([late, oskari, nikke, camilla, roosa])
 
-    game_mode = ClassicMinuteBeerMode(players)
+    # game_mode = ClassicMinuteBeerMode(players)
+    game_mode = OptimizedBACMode(players)
 
     drawer = Drawer(main_surface, players, game_mode)
 
@@ -62,7 +68,7 @@ def main():
         pg.display.flip()
 
     Timer.reset_clock()
-    Timer.round_time = 60
+    Timer.round_time = 20
     #Main loop
     while True:
         game_mode.update_game()
