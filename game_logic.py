@@ -38,7 +38,7 @@ class ClassicMinuteBeerMode(BasicLogic):
 
     def update_game(self):
         round_left = Timer.round_time_left()
-
+        print(round_left)
         if (round_left <= 5):
             self.update_counter(round_left)
             self.game_message_text = ""
@@ -62,16 +62,15 @@ class OptimizedBACMode(BasicLogic):
         round_left = Timer.round_time_left()
         if (round_left <= 5):
             self.update_counter(round_left)
+            self.show_drinkers = False
 
         elif(round_left >= Timer.round_time - 5):
             if self.some_drinking_to_do:
                 self.counter_text = ""
                 self.drinkers = self.get_drinkers()
                 self.players_drink(self.drinkers)
-        if (round_left >= Timer.round_time - 5):
-            self.show_drinkers = True
-        else:
-            self.show_drinkers = False
+                self.show_drinkers = True
+           
 
     def get_drinkers(self):
         average_bac = self.get_average_bac()

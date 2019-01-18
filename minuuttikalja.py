@@ -3,7 +3,6 @@ import sys
 from time import time
 from drawer import *
 from timer import Timer
-from player import Player
 from input_screen import *
 from player import *
 from game_logic import *
@@ -11,6 +10,7 @@ from game_logic import *
 
 def main():
 
+    print("asdf")
     pg.init()      
     surface_height = 700   
     surface_width = 1200
@@ -33,10 +33,10 @@ def main():
                 else:
                     more_players = False
     
-    '''         
+            
     pg.mixer.init()
-    laser_beam_sound = pg.mixer.Sound("Tick.wav")
-    '''
+    laser_beam_sound = pg.mixer.Sound("laser_beam.wav")
+    
 
     oskari = Player('Oskari', 'male', 82000, 0.05, (0,255,0))
     # niko = Player('Niko', 'male', 64500, 0.02, (200,0,100))
@@ -50,7 +50,7 @@ def main():
 
     players.extend([late, oskari, nikke, camilla, roosa])
 
-    # game_mode = ClassicMinuteBeerMode(players)
+    #game_mode = ClassicMinuteBeerMode(players)
     game_mode = OptimizedBACMode(players)
 
     drawer = Drawer(main_surface, players, game_mode)
@@ -64,9 +64,10 @@ def main():
         pg.display.flip()
 
     Timer.reset_clock()
-    Timer.round_time = 20
+    Timer.round_time = 10
     #Main loop
     while True:
+        pygame.event.get()
         game_mode.update_game()
         drawer.draw()
         pg.display.flip()
