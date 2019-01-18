@@ -3,7 +3,6 @@ from time import time
 from timer import Timer
 from input_screen import *
 
-SIP_SIZE = 0.04
 MALE_FACTOR = 0.68
 FEMALE_FACTOR = 0.55
 BAC_REDUCTION_PER_SECOND = 0.016/3600
@@ -11,11 +10,12 @@ BAC_REDUCTION_PER_SECOND = 0.016/3600
 class Player:
     number_of_players = 0
 
-    def __init__(self, name, gender, weight, drink_alc_perc=0.05, color=(255,255,255)):
+    def __init__(self, name, gender, weight, sip_size=0.04, drink_alc_perc=0.05, color=(255,255,255)):
         self.id = Player.number_of_players
         self.name = name
         self.gender = gender
         self.weight = weight
+        self.sip_size = sip_size
         self.drink_alc_perc = drink_alc_perc
         self.color = color
         self.alcohol_consumed = 0
@@ -27,7 +27,7 @@ class Player:
         Player.number_of_players += 1
 
     def drink(self):
-        grams_of_alcohol = SIP_SIZE*(self.drink_alc_perc*1000)
+        grams_of_alcohol = self.sip_size*(self.drink_alc_perc*1000)
         self.alcohol_consumed += grams_of_alcohol
         self.calculate_bac()
 

@@ -26,12 +26,7 @@ class Drawer:
 
     #TODO refactor.. made in hurry
     def draw_game_message(self):
-        if (self.game_mode.get_counter_text() != ""):
-            text = self.game_mode.get_counter_text()
-            self.count_label = self.big_font.render(text, 1, RED, BLACK)
-            position_x = self.main_surface.get_width() / 2 - self.count_label.get_width() / 2
-            position_y = self.main_surface.get_height() / 2 - self.count_label.get_height() / 2
-            self.main_surface.blit(self.count_label, ( position_x , position_y))
+        
 
         if self.game_mode.game_id == game_logic.MINUTE_BEER:
             if (self.game_mode.game_message_text != ""):
@@ -65,6 +60,13 @@ class Drawer:
                 for j, l in enumerate(row):
                     self.main_surface.blit(l, ( position_x , position_y))
                     position_x += l.get_width() + 2*LINE_SPACE
+        
+        if (self.game_mode.get_counter_text() != ""):
+            text = self.game_mode.get_counter_text()
+            self.count_label = self.big_font.render(text, 1, RED, BLACK)
+            position_x = self.main_surface.get_width() / 2 - self.count_label.get_width() / 2
+            position_y = self.main_surface.get_height() / 2 - self.count_label.get_height() / 2
+            self.main_surface.blit(self.count_label, ( position_x , position_y))
 
        
             
@@ -80,8 +82,8 @@ class Drawer:
         self.main_surface.blit(self.info_bar, (position_x, position_y))
 
     def draw_player_stats(self):
-        if (self.game_mode.game_id == game_logic.OPTIMIZED_BAC and self.game_mode.show_drinkers):
-            return
+        # if (self.game_mode.game_id == game_logic.OPTIMIZED_BAC and self.game_mode.show_drinkers):
+        #     return
         for i, p in enumerate(self.players):
             p.calculate_bac()
             stats = self.small_font.render("{}. {: <8} {:.6f} o/oo, alc consumed: {:.2f} grams, sober in {:.2f} hours".format(i+1,p.name, p.bac, p.alcohol_consumed, p.time_left_drunk),1 ,  p.color )
