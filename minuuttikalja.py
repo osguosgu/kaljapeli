@@ -47,7 +47,7 @@ def main():
 
     #testi = Player(name, gender, weight(grams), sip/drink size (liters), alco%, color(rbg)  )
     sale = Player('Z4guero', 'male', 85000, 0.04 , 0.05, PURPLE )
-    rihis = Player('Rihis', 'male', 85000, 0.04, 0.049, RED )
+    rihis = Player('Rihis', 'male', 85000, 0.04, 0.049, RED, 1 )
     antsa = Player('Antsa', 'male', 82000, 0.04, 0.05, PINK )
     sanna = Player('Sanna', 'female',59000, 0.04, 0.05, BLUE)
     kalmis = Player('Kalmis', 'male', 85000, 0.04, 0.05, PURPLE)
@@ -82,8 +82,11 @@ def main():
     #Main loop
     while True:
         for evt in pygame.event.get():
-            if evt.type == KEYDOWN:
-                game_mode.drinkers = []
+            if game_mode.game_id == OPTIMIZED_BAC and evt.type == KEYDOWN:
+                if len(game_mode.drinkers) != 0:
+                    game_mode.drinkers = []
+                else:
+                    game_mode.drinkers = game_mode.drinkers_backup
         pygame.event.get()
         game_mode.update_game()
         drawer.draw()

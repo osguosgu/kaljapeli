@@ -10,7 +10,7 @@ BAC_REDUCTION_PER_SECOND = 0.016/3600
 class Player:
     number_of_players = 0
 
-    def __init__(self, name, gender, weight, sip_size=0.04, drink_alc_perc=0.05, color=(255,255,255)):
+    def __init__(self, name, gender, weight, sip_size=0.04, drink_alc_perc=0.05, color=(255,255,255), initial_beers=0):
         self.id = Player.number_of_players
         self.name = name
         self.gender = gender
@@ -25,6 +25,10 @@ class Player:
         self.time_left_drunk = 0
 
         Player.number_of_players += 1
+
+        for beer in range(initial_beers):
+            self.drink()
+
 
     def drink(self):
         grams_of_alcohol = self.sip_size*(self.drink_alc_perc*1000)

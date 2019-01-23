@@ -70,6 +70,7 @@ class OptimizedBACMode(BasicLogic):
         super().__init__(players)
         self.game_id = OPTIMIZED_BAC
         self.drinkers = []
+        self.drinkers_backup = []
         self.show_drinkers = True
 
     def update_game(self):
@@ -85,6 +86,7 @@ class OptimizedBACMode(BasicLogic):
             if (self.some_drinking_to_do):
                 self.counter_text = ""
                 self.drinkers = self.get_drinkers()
+                self.drinkers_backup = self.drinkers
                 self.players_drink(self.drinkers)
             if (self.should_i_talk):
                 thread = Thread(target = self.punish)
